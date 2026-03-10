@@ -1,0 +1,8 @@
+//
+// Created by Admin on 10.03.2026.
+//
+
+#ifndef PROGRAMMING_LABS_QUICK_SORT_H
+#define PROGRAMMING_LABS_QUICK_SORT_H
+
+#endif //PROGRAMMING_LABS_QUICK_SORT_H
