@@ -1,4 +1,4 @@
-add_executable(Lab3a_variants_9_3_3_3 main.cpp
+add_executable(Lab3a_variants_9_3_9_3 main.cpp
         Point.hpp
         selection_sort.hpp
         quick_sort.hpp
