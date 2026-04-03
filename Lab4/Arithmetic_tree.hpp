@@ -1,4 +1,5 @@
 #include <cmath>
+#include <format>
 #include <iostream>
 using namespace std;
 
@@ -57,7 +58,32 @@ bool equal(Arithm_node* a, Arithm_node* b) {
     return false;
 }
 
+int priority (char op) {
+    switch (op) {
+        case '+': return 1;
+        case '-': return 1;
+        case '*': return 2;
+        case '/': return 2;
+        case '^': return 3;
+    }
+}
+
+string print_tree(Arithm_node* node, int prev = 0) {
+    if (!node) return "";
+
+    if (node->type == VAR) return node->var;
+    if (node->type == CONST) return std::format("{}", node->value);
+
+    string s = print_tree(node->left, priority(node->op))
+             + string(1, node->op)
+             + print_tree(node->right, priority(node->op));
+
+    if (priority(node->op) < prev) s = "(" + s + ")";
+    return s;
+}
+
 Arithm_node* simplify(Arithm_node* node) {
+
     if (!node) return nullptr;
 
     if (node->type != OP) return node;
@@ -99,13 +125,13 @@ Arithm_node* simplify(Arithm_node* node) {
     }
 
     if (node->op == '+' && equal(node->left,node->right)) {
-
+        Arithm_node* old_left = node->left;
         node->op = '*';
-
-        node->left->type = CONST;
+        node->left = new Arithm_node(CONST);
         node->left->value = 2;
-
+        node->right = old_left;
         return node;
+
     }
 
     if (node->op == '-' && node->right->type==CONST && node->right->value==0) {
@@ -221,11 +247,30 @@ Arithm_node* simplify(Arithm_node* node) {
     return node;
 }
 
-void print_tree(Arithm_node* node, std::string st="") {
-    if (node==nullptr) return;
+struct Variable {
+    string name;
+    double value;
+};
 
-    cout<<st<<node->value<<endl;
+double evaluate (Arithm_node* node, Variable vars[], int num) {
+    if (!node) return 0;
 
-    print_tree(node->left, st+"  ");
-    print_tree(node->right, st+"  ");
+    if (node->type==CONST) {
+        return node->value;
+    }
+
+    if (node->type==VAR) {
+        for (int i = 0; i < num; i++) {
+            if (vars[i].name == node->var) {
+                return vars[i].value;
+            }
+        }
+        throw runtime_error("Error! Variable not found");
+    }
+
+    double left_res = evaluate(node->left, vars, num);
+    double right_res = evaluate(node->right, vars, num);
+    double res = calculate(node->op,left_res, right_res);
+
+    return res;
 }
