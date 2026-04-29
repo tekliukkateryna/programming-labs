@@ -33,7 +33,7 @@ void demonstration() {
     arrlist.append(c3);
     arrlist.append(c2);
     arrlist.append(c1);
-    arrlist.show();
+    arrlist.print();
     std::cout<<std::endl;
 
     std::cout<<"Linked list"<<std::endl;
@@ -42,10 +42,10 @@ void demonstration() {
     list.append(c1);
     list.append(c2);
     list.append_left(c3);
-    list.show();
+    list.print();
     list.pop_left();
     list.pop();
-    list.show();
+    list.print();
     std::cout<<std::endl;
 
     // для інштого типу
@@ -54,9 +54,9 @@ void demonstration() {
     intList.create_empty();
     intList.append(42);
     intList.append(100);
-    intList.show();
+    intList.print();
     intList.pop_left();
-    intList.show();
+    intList.print();
     std::cout<<std::endl;
 }
 

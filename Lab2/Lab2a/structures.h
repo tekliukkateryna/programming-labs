@@ -98,7 +98,7 @@ public:
         return arrlist.empty();
     }
 
-    void show() {
+    void print() {
         if (arrlist.empty()) {
             std::cout<<"Empty"<<std::endl;
         } else {
@@ -179,7 +179,7 @@ public:
         return false;
     }
 
-    void show() {
+    void print() {
         if (head==NULL && tail==NULL) {
             std::cout<<"Empty"<<std::endl;
             std::cout<<std::endl;
