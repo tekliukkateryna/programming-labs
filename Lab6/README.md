@@ -1,9 +1,5 @@
-1. Щодо варіанту - у мене 9 (дата і час за зростанням). Я реалізувала відповідну структуру даних та перевизначила оператори
-порівняння та виводу, щоб було зручно працювати. Усі структури даних я реалізовувала на основі узагальненого типу, тож
-все працює як на DateTime, так і інших типах (я продемонструвала роботу DayTime в ArrayList, а далі перейшла на цілі
-числа для наочності).
-2. Реалізовано:   
-Впорядкований список повністю вручну без допомоги бібліотек для Array List, Linked List, Binary Tree, AVL Tree  
-А також для кожної реалізації методи: create_empty, add, pop, find, range, print, apply  
-3. *Також я додала зовсім простеньку візуалізацію дерев в консолі, щоб видно було як відрізняється звичайне бінарне 
-дерево від самозбалансованого AVL.
+1. Implemented: A sorted list implemented from scratch, without using any libraries, for ArrayList, LinkedList, BinaryTree, and AVLTree. I also implemented the following methods for each implementation: create_empty, add, pop, find, range, print, and apply
+2. I implemented all data structures based on C++ templates (generics), so
+everything works with both the custom DateTime and other types. For DateTime, I overrode the
+comparison and output operators to make it easier to work with.
+3. *I also added a simple console-based visualizern of the trees to show how a regular binary tree differs from a self-balancing AVL tree.
